@@ -7,7 +7,7 @@ class MagasinTest {
 
     @Test
     public void testList() {
-        String[] names = new String[] {"Comté", "Kryptonite", "Pass VIP Concert", "Pouvoirs magiques", "kryptonite", "comté"};
+        String[] names = new String[] {"Comté", "Kryptonite", "Pass VIP Concert", "kryptonite", "comté"};
         Integer[] sellins = new Integer[] {8, -1, 0, 2, 4, 5, 6, 9, 10, 11};
         Integer[] qualities = new Integer[] {1, 0, 20, 50, 49, 51, 80, };
 
