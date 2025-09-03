@@ -36,8 +36,11 @@ class Magasin {
     }
 
     private int calculeItemQualityUpdate(Item item) {
-        if (!item.name.equals("Comté")
-                && !item.name.equals("Pass VIP Concert")) {
+        if (item.name.equals("Comté")) {
+            return item.quality < 50 ? item.quality + 1 :  item.quality;
+        }
+
+        if (!item.name.equals("Pass VIP Concert")) {
             if (item.quality > 0) {
                 item.quality = item.quality - 1;
             }
