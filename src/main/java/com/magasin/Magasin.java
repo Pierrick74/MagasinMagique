@@ -24,20 +24,15 @@ class Magasin {
     }
 
     private Integer calculeItemQualityWhenExpirationPassed(Item item) {
-        if (!item.name.equals("Comté")) {
-            if (!item.name.equals("Pass VIP Concert")) {
-                if (item.quality > 0) {
-                    return item.quality - 1;
-                }
-            } else {
-                return item.quality - item.quality;
-            }
-        } else {
-            if (item.quality < 50) {
-                return item.quality + 1;
-            }
+        if (item.name.equals("Comté")) {
+                return (item.quality < 50) ? item.quality + 1 : item.quality;
         }
-        return item.quality;
+
+        if (item.name.equals("Pass VIP Concert")) {
+            return 0;
+        }
+
+        return item.quality > 0 ? item.quality - 1 : item.quality;
     }
 
     private int calculeItemQualityUpdate(Item item) {
