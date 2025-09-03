@@ -18,21 +18,26 @@ class Magasin {
             items[i].sellIn = items[i].sellIn - 1;
 
             if (items[i].sellIn < 0) {
-                if (!items[i].name.equals("Comté")) {
-                    if (!items[i].name.equals("Pass VIP Concert")) {
-                        if (items[i].quality > 0) {
-                            items[i].quality = items[i].quality - 1;
-                        }
-                    } else {
-                        items[i].quality = items[i].quality - items[i].quality;
-                    }
-                } else {
-                    if (items[i].quality < 50) {
-                        items[i].quality = items[i].quality + 1;
-                    }
-                }
+                items[i].quality = calculeItemQualityWhenExpirationPassed(items[i]);
             }
         }
+    }
+
+    private Integer calculeItemQualityWhenExpirationPassed(Item item) {
+        if (!item.name.equals("Comté")) {
+            if (!item.name.equals("Pass VIP Concert")) {
+                if (item.quality > 0) {
+                    return item.quality - 1;
+                }
+            } else {
+                return item.quality - item.quality;
+            }
+        } else {
+            if (item.quality < 50) {
+                return item.quality + 1;
+            }
+        }
+        return item.quality;
     }
 
     private int calculeItemQualityUpdate(Item item) {
