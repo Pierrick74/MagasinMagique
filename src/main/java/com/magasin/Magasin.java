@@ -40,11 +40,7 @@ class Magasin {
             return item.quality < 50 ? item.quality + 1 :  item.quality;
         }
 
-        if (!item.name.equals("Pass VIP Concert")) {
-            if (item.quality > 0) {
-                item.quality = item.quality - 1;
-            }
-        } else {
+        if (item.name.equals("Pass VIP Concert")) {
             if (item.quality < 50) {
                 item.quality = item.quality + 1;
 
@@ -62,7 +58,9 @@ class Magasin {
                     }
                 }
             }
+            return item.quality;
         }
-        return item.quality;
+
+        return item.quality > 0 ? item.quality - 1 : item.quality;
     }
 }
