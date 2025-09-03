@@ -41,24 +41,19 @@ class Magasin {
         }
 
         if (item.name.equals("Pass VIP Concert")) {
-            if (item.quality < 50) {
-                item.quality = item.quality + 1;
-
-                if (item.name.equals("Pass VIP Concert")) {
-                    if (item.sellIn < 11) {
-                        if (item.quality < 50) {
-                            item.quality = item.quality + 1;
-                        }
-                    }
-
-                    if (item.sellIn < 6) {
-                        if (item.quality < 50) {
-                            item.quality = item.quality + 1;
-                        }
-                    }
-                }
+            if (item.quality >= 50) {
+                return item.quality;
             }
-            return item.quality;
+
+            if (item.sellIn < 6) {
+                return Math.min((item.quality + 3), 50);
+            }
+
+            if (item.sellIn < 11) {
+                return Math.min((item.quality + 2), 50);
+            }
+
+            return item.quality = item.quality + 1;
         }
 
         return item.quality > 0 ? item.quality - 1 : item.quality;
