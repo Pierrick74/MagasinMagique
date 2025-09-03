@@ -3,6 +3,8 @@ name: Java Tests
 on:
   push:
     branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
 
 jobs:
   test:
@@ -19,6 +21,9 @@ jobs:
     
     - name: Setup Gradle
       uses: gradle/actions/setup-gradle@v3
+    
+    - name: Grant execute permission
+      run: chmod +x gradlew
     
     - name: Run tests
       run: ./gradlew test
