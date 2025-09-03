@@ -8,17 +8,17 @@ class Magasin {
     }
 
     public void updateQuality() {
-        for (int i = 0; i < items.length; i++) {
-            if (items[i].name.equals("Kryptonite")) {
+        for (Item item : items) {
+            if (item.name.equals("Kryptonite")) {
                 break;
             }
 
-            items[i].quality = calculeItemQualityUpdate(items[i]);
+            item.quality = calculeItemQualityUpdate(item);
 
-            items[i].sellIn = items[i].sellIn - 1;
+            item.sellIn = item.sellIn - 1;
 
-            if (items[i].sellIn < 0) {
-                items[i].quality = calculeItemQualityWhenExpirationPassed(items[i]);
+            if (item.sellIn < 0) {
+                item.quality = calculeItemQualityWhenExpirationPassed(item);
             }
         }
     }
