@@ -13,30 +13,7 @@ class Magasin {
                 break;
             }
 
-            if (!items[i].name.equals("Comté")
-                    && !items[i].name.equals("Pass VIP Concert")) {
-                if (items[i].quality > 0) {
-                    items[i].quality = items[i].quality - 1;
-                }
-            } else {
-                if (items[i].quality < 50) {
-                    items[i].quality = items[i].quality + 1;
-
-                    if (items[i].name.equals("Pass VIP Concert")) {
-                        if (items[i].sellIn < 11) {
-                            if (items[i].quality < 50) {
-                                items[i].quality = items[i].quality + 1;
-                            }
-                        }
-
-                        if (items[i].sellIn < 6) {
-                            if (items[i].quality < 50) {
-                                items[i].quality = items[i].quality + 1;
-                            }
-                        }
-                    }
-                }
-            }
+            items[i].quality = calculeItemQualityUpdate(items[i]);
 
             items[i].sellIn = items[i].sellIn - 1;
 
@@ -56,5 +33,33 @@ class Magasin {
                 }
             }
         }
+    }
+
+    private int calculeItemQualityUpdate(Item item) {
+        if (!item.name.equals("Comté")
+                && !item.name.equals("Pass VIP Concert")) {
+            if (item.quality > 0) {
+                item.quality = item.quality - 1;
+            }
+        } else {
+            if (item.quality < 50) {
+                item.quality = item.quality + 1;
+
+                if (item.name.equals("Pass VIP Concert")) {
+                    if (item.sellIn < 11) {
+                        if (item.quality < 50) {
+                            item.quality = item.quality + 1;
+                        }
+                    }
+
+                    if (item.sellIn < 6) {
+                        if (item.quality < 50) {
+                            item.quality = item.quality + 1;
+                        }
+                    }
+                }
+            }
+        }
+        return item.quality;
     }
 }
