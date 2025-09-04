@@ -19,10 +19,22 @@ class Magasin {
                 case "Comté":
                     updateComte(item);
                     break;
+                case "Pouvoirs magiques":
+                    updateMagicPower(item);
+                    break;
                 default:
                     update(item);
                     break;
             }
+        }
+    }
+
+    private void updateMagicPower(Item item) {
+        item.quality =  Math.max(item.quality - 2, 0);
+        item.sellIn = item.sellIn - 1;
+
+        if (item.sellIn < 0) {
+            item.quality =  Math.max(item.quality - 2, 0);
         }
     }
 
